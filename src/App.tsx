@@ -1,17 +1,24 @@
-import { Box } from "@chakra-ui/react";
+import { Box, ChakraProvider } from "@chakra-ui/react";
+import { useSelector } from "react-redux";
 import { Banner } from "./components/Banner";
 import { Layout } from "./components/Layout";
 import { NavBar } from "./components/NavBar";
+import { RootState } from "./store/store";
+import { Theme, themes } from "./theme";
 
 function App() {
-  return (
-    <Box>
-      <Layout>
-        <NavBar />
+  const theme = useSelector((state: RootState) => state.theme);
 
-        <Banner />
-      </Layout>
-    </Box>
+  return (
+    <ChakraProvider theme={themes[theme as Theme]}>
+      <Box>
+        <Layout>
+          <NavBar />
+
+          <Banner />
+        </Layout>
+      </Box>
+    </ChakraProvider>
   );
 }
 
