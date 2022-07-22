@@ -3,9 +3,9 @@ import { Theme } from "../../theme";
 
 export const theme = createSlice({
   name: "theme",
-  initialState: "vanilla",
+  initialState: "vanilla" as Theme,
   reducers: {
-    update: (state, action: PayloadAction<Theme>) => action.payload,
+    update: (state: Theme, action: PayloadAction<Theme>) => action.payload,
   },
 });
 

@@ -4,13 +4,13 @@ import { Banner } from "./components/Banner";
 import { Layout } from "./components/Layout";
 import { NavBar } from "./components/NavBar";
 import { RootState } from "./store/store";
-import { Theme, themes } from "./theme";
+import { themes } from "./theme";
 
 function App() {
   const theme = useSelector((state: RootState) => state.theme);
 
   return (
-    <ChakraProvider theme={themes[theme as Theme]}>
+    <ChakraProvider theme={themes[theme]}>
       <Box>
         <Layout>
           <NavBar />
