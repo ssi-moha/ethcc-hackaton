@@ -1,4 +1,5 @@
-import { Box, ChakraProvider, HStack } from "@chakra-ui/react";
+import { Box, ChakraProvider } from "@chakra-ui/react";
+import ReactCanvasConfetti from "react-canvas-confetti";
 import { useSelector } from "react-redux";
 import { Banner } from "./components/Banner";
 import { Layout } from "./components/Layout";
@@ -9,7 +10,8 @@ import { themes } from "./theme";
 
 function App() {
   const theme = useSelector((state: RootState) => state.theme);
-  const {} = useUpdateThemeOnConnection();
+  const { fire } = useUpdateThemeOnConnection();
+
   return (
     <ChakraProvider theme={themes[theme]}>
       <Box>
@@ -17,10 +19,19 @@ function App() {
           <NavBar />
 
           <Banner />
+
+          <Box
+            id="main"
+            mt={10}
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            flex={1}
+          >
+            <ReactCanvasConfetti fire={fire} className="canvas" />
+            Welcome to our app!
+          </Box>
         </Layout>
-        <Box mt={10} display="flex" justifyContent="center" alignItems="center">
-          {theme}
-        </Box>
       </Box>
     </ChakraProvider>
   );

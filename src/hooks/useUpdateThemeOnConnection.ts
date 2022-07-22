@@ -18,7 +18,7 @@ const useUpdateThemeOnConnection = () => {
     setVanillaTheme();
   }, [isDisconnected]);
 
-  return {};
+  return { fire: isConnected };
 };
 
 export default useUpdateThemeOnConnection;
