@@ -1,3 +1,8 @@
 import { extendTheme } from "@chakra-ui/react";
 
-export const vanilla = extendTheme({});
+export const vanilla = extendTheme({
+  colors: {
+    bannerLeft: "grey",
+    bannerRight: "black",
+  },
+});

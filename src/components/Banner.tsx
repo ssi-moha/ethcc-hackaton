@@ -1,14 +1,13 @@
-import { Box } from "@chakra-ui/react";
+import { Box, color, useTheme } from "@chakra-ui/react";
 
 type BannerProps = {};
 
 export const Banner = ({}: BannerProps) => {
+  const theme = useTheme();
   return (
     <Box
-      sx={{
-        height: 1,
-        backgroundImage: "linear-gradient(to right, #0987A0, #805AD5);",
-      }}
+      height={1}
+      bgGradient="linear(to-r, bannerLeft, bannerRight)"
     />
   );
 };
