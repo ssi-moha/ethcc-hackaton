@@ -10,7 +10,7 @@ import { themes } from "./theme";
 
 function App() {
   const theme = useSelector((state: RootState) => state.theme);
-  const { fire } = useUpdateThemeOnConnection();
+  const { nfts, fire } = useUpdateThemeOnConnection();
 
   return (
     <ChakraProvider theme={themes[theme]}>
