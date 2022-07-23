@@ -5,28 +5,29 @@ import TextInput from "./TextInput";
 
 type ProductFieldsType = {
   register: UseFormRegister<any>;
-  control: Control<AdminFormValues, object>;
-  index: number;
+  index?: number;
 };
 
 const ProductFields = ({ register, index }: ProductFieldsType) => {
+  const baseName = index ? `products.${index}.` : "";
+
   return (
-    <HStack py={4} borderBottomColor={"grey"} borderBottomWidth={1}>
+    <HStack py={4} borderBottomColor={"super"} borderBottomWidth={4}>
       <HStack flex={1}>
         <TextInput
-          name={`products.${index}.name`}
+          name={`${baseName}name`}
           label="Product Name"
           register={register}
         />
 
         <TextInput
-          name={`products.${index}.image`}
+          name={`${baseName}image`}
           label="Product Image"
           register={register}
         />
 
         <TextInput
-          name={`products.${index}.price`}
+          name={`${baseName}price`}
           label="Price"
           register={register}
         />
@@ -34,13 +35,13 @@ const ProductFields = ({ register, index }: ProductFieldsType) => {
 
       <HStack alignSelf="flex-start">
         <TextInput
-          name={`products.${index}.curation`}
+          name={`${baseName}curation`}
           label="Collection address"
           register={register}
         />
 
         <TextInput
-          name={`products.${index}.discount`}
+          name={`${baseName}discount`}
           label="Discount for holders"
           register={register}
         />

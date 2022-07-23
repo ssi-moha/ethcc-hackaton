@@ -3,10 +3,11 @@ import AdminForm from "./../components/AdminForm";
 import { Box } from "@chakra-ui/react";
 
 import useGetAppProducts from "../hooks/useGetAppProducts";
+import useUpdateThemeOnConnection from "../hooks/useUpdateThemeOnConnection";
 
 const Admin = () => {
   const products = useGetAppProducts("ukwyvv9vMiB66hiEaoRF");
-
+  
   return (
     <Box
       id="main"

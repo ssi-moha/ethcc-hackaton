@@ -33,7 +33,7 @@ const useUpdateThemeOnConnection = () => {
     }
   }, [address]);
 
-  return { nfts, fire: isConnected };
+  return { nfts };
 };
 
 export default useUpdateThemeOnConnection;

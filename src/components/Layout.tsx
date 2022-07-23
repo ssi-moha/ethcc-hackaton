@@ -1,12 +1,11 @@
 import { Box } from "@chakra-ui/react";
+import { Outlet } from "react-router-dom";
 import { Banner } from "./Banner";
 import { NavBar } from "./NavBar";
 
-type LayoutProps = {
-  children: React.ReactNode;
-};
+type LayoutProps = {};
 
-export const Layout = ({ children, ...props }: LayoutProps) => {
+export const Layout = ({ ...props }: LayoutProps) => {
   return (
     <Box
       {...props}
@@ -14,7 +13,7 @@ export const Layout = ({ children, ...props }: LayoutProps) => {
     >
       <NavBar />
       <Banner />
-      {children}
+      <Outlet />
     </Box>
   );
 };

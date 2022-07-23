@@ -6,11 +6,19 @@ import {
   AccordionPanel,
   Box,
   Button,
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalOverlay,
+  Text,
+  useDisclosure,
   VStack,
 } from "@chakra-ui/react";
+import { useState } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
 import { updateAppFromDB } from "../clients/firebase";
 import ProductFields from "./ProductFields";
+import ProductForm from "./ProductForm";
 import TextInput from "./TextInput";
 
 export type ProductFieldsType = {
@@ -33,6 +41,13 @@ type AdminFormProps = {
 };
 
 function AdminForm({ products, id }: AdminFormProps) {
+  const {
+    isOpen: isAddProductFormOpen,
+    onOpen: setIsAddProductFormOpen,
+    onClose: setIsAddProductFormClose,
+  } = useDisclosure();
+  console.log(isAddProductFormOpen);
+
   const { handleSubmit, register, control } = useForm<AdminFormValues>({
     defaultValues: {
       products,
@@ -44,12 +59,11 @@ function AdminForm({ products, id }: AdminFormProps) {
     name: "products",
   });
 
-  const addProductForm = () => {
-    append({});
+  const addProductForm = (values: ProductFieldsType) => {
+    append(values);
   };
 
   const onSubmit = async (values: AdminFormValues) => {
-    console.log(values);
     await updateAppFromDB(values, id);
   };
 
@@ -69,6 +83,9 @@ function AdminForm({ products, id }: AdminFormProps) {
             <AccordionPanel pb={4}>
               <TextInput register={register} label="App Name" name="appname" />
               <TextInput register={register} label="Logo Link" name="logo" />
+              <Button mt={4} onClick={setIsAddProductFormOpen}>
+                Add Product
+              </Button>
             </AccordionPanel>
           </AccordionItem>
 
@@ -88,16 +105,11 @@ function AdminForm({ products, id }: AdminFormProps) {
                     index={index}
                     key={field.id}
                     register={register}
-                    control={control}
                   />
                 );
               })}
 
               <VStack align="flex-start">
-                <Button onClick={addProductForm} mt={4} type="button">
-                  Add new product
-                </Button>
-
                 <Button mt={4} type="submit">
                   Save
                 </Button>
@@ -118,6 +130,17 @@ function AdminForm({ products, id }: AdminFormProps) {
           </AccordionItem>
         </Accordion>
       </form>
+      <Modal onClose={setIsAddProductFormClose} isOpen={isAddProductFormOpen}>
+        <ModalOverlay />
+        <ModalContent>
+          <VStack px={8}>
+            <ModalHeader mx="auto" textAlign="center">
+              <Text>Add a product</Text>
+            </ModalHeader>
+            <ProductForm onSubmit={addProductForm} />
+          </VStack>
+        </ModalContent>
+      </Modal>
     </Box>
   );
 }
