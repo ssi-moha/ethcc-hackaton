@@ -11,7 +11,8 @@ create products, define prices, checkout orders.
 Exclusive items, discounts, curation, front end design.
 
 
-**TRUST:**
+**TRUST:** 
+
 **Identification with ZK Proof:** Protect your users from scams and doxxing using zero knowledge proof.
 
 If your wallet owns valuable tokens and you care for your privacy, why would you connect to a website with no credentials?
