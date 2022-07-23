@@ -1,4 +1,13 @@
-import { Button, HStack, VStack } from "@chakra-ui/react";
+import {
+  Accordion,
+  AccordionButton,
+  AccordionIcon,
+  AccordionItem,
+  AccordionPanel,
+  Box,
+  Button,
+  VStack,
+} from "@chakra-ui/react";
 import { useFieldArray, useForm } from "react-hook-form";
 import { updateAppFromDB } from "../clients/firebase";
 import ProductFields from "./ProductFields";
@@ -45,30 +54,71 @@ function AdminForm({ products, id }: AdminFormProps) {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <TextInput register={register} label="App Name" name="appname" />
-      <TextInput register={register} label="Logo Link" name="logo" />
+    <Box w={"full"} px={8}>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <Accordion defaultIndex={[0]} allowMultiple>
+          <AccordionItem>
+            <h2>
+              <AccordionButton>
+                <Box flex="1" textAlign="left">
+                  Branding
+                </Box>
+                <AccordionIcon />
+              </AccordionButton>
+            </h2>
+            <AccordionPanel pb={4}>
+              <TextInput register={register} label="App Name" name="appname" />
+              <TextInput register={register} label="Logo Link" name="logo" />
+            </AccordionPanel>
+          </AccordionItem>
 
-      {fields.map((field, index) => {
-        return (
-          <ProductFields
-            index={index}
-            key={field.id}
-            register={register}
-            control={control}
-          />
-        );
-      })}
+          <AccordionItem>
+            <h2>
+              <AccordionButton>
+                <Box flex="1" textAlign="left">
+                  Add Products
+                </Box>
+                <AccordionIcon />
+              </AccordionButton>
+            </h2>
+            <AccordionPanel pb={4}>
+              {fields.map((field, index) => {
+                return (
+                  <ProductFields
+                    index={index}
+                    key={field.id}
+                    register={register}
+                    control={control}
+                  />
+                );
+              })}
 
-      <VStack align="flex-start">
-        <Button onClick={addProductForm} mt={4} type="button">
-          +
-        </Button>
-        <Button mt={4} type="submit">
-          Save
-        </Button>
-      </VStack>
-    </form>
+              <VStack align="flex-start">
+                <Button onClick={addProductForm} mt={4} type="button">
+                  Add new product
+                </Button>
+
+                <Button mt={4} type="submit">
+                  Save
+                </Button>
+              </VStack>
+            </AccordionPanel>
+          </AccordionItem>
+
+          <AccordionItem>
+            <h2>
+              <AccordionButton>
+                <Box flex="1" textAlign="left">
+                  Products
+                </Box>
+                <AccordionIcon />
+              </AccordionButton>
+            </h2>
+            <AccordionPanel pb={4}>test</AccordionPanel>
+          </AccordionItem>
+        </Accordion>
+      </form>
+    </Box>
   );
 }
 

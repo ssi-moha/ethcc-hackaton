@@ -11,39 +11,41 @@ type ProductFieldsType = {
 
 const ProductFields = ({ register, index }: ProductFieldsType) => {
   return (
-    <VStack border="solid 1px" borderColor="black">
-      <HStack>
+    <HStack py={4} borderBottomColor={"grey"} borderBottomWidth={1}>
+      <HStack flex={1}>
         <TextInput
           name={`products.${index}.name`}
-          label="Name"
+          label="Product Name"
           register={register}
         />
+
         <TextInput
           name={`products.${index}.image`}
-          label="Image Link"
+          label="Product Image"
           register={register}
         />
-      </HStack>
-      <HStack>
+
         <TextInput
           name={`products.${index}.price`}
           label="Price"
           register={register}
         />
-        <TextInput
-          name={`products.${index}.discount`}
-          label="Discount"
-          register={register}
-        />
       </HStack>
+
       <HStack alignSelf="flex-start">
         <TextInput
           name={`products.${index}.curation`}
-          label="Curation"
+          label="Collection address"
+          register={register}
+        />
+
+        <TextInput
+          name={`products.${index}.discount`}
+          label="Discount for holders"
           register={register}
         />
       </HStack>
-    </VStack>
+    </HStack>
   );
 };
 
