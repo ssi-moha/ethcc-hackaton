@@ -1,5 +1,6 @@
 import { Button, HStack, VStack } from "@chakra-ui/react";
 import { useFieldArray, useForm } from "react-hook-form";
+import { addAppToDB } from "../clients/firebase";
 import ProductFields from "./ProductFields";
 import TextInput from "./TextInput";
 
@@ -19,23 +20,25 @@ export type AdminFormValues = {
 
 function AdminForm() {
   const { handleSubmit, register, control } = useForm<AdminFormValues>();
-  const { fields, append, prepend, remove, swap, move, insert } = useFieldArray(
-    {
-      control,
-      name: "products",
-    }
-  );
+  const { fields, append } = useFieldArray({
+    control,
+    name: "products",
+  });
 
   const addProductForm = () => {
     append({});
   };
 
-  const onSubmit = (values: AdminFormValues) => console.log(values);
+  const onSubmit = async (values: AdminFormValues) => {
+    console.log(values);
+    await addAppToDB(values);
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <TextInput register={register} label="App Name" name="appname" />
       <TextInput register={register} label="Logo Link" name="logo" />
+
       {fields.map((field, index) => {
         return (
           <ProductFields
@@ -46,6 +49,7 @@ function AdminForm() {
           />
         );
       })}
+
       <VStack align="flex-start">
         <Button onClick={addProductForm} mt={4} type="button">
           +

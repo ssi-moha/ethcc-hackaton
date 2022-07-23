@@ -5,7 +5,12 @@ import { Banner } from "../components/Banner";
 import { Layout } from "../components/Layout";
 import { NavBar } from "../components/NavBar";
 
+import useGetAppProducts from "../hooks/useGetAppProducts";
+
 const Admin = () => {
+  const products = useGetAppProducts("ukwyvv9vMiB66hiEaoRF");
+  console.log(products);
+
   return (
     <Box>
       <Layout>

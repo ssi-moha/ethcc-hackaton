@@ -9,14 +9,7 @@ type ProductFieldsType = {
   index: number;
 };
 
-const ProductFields = ({ register, control, index }: ProductFieldsType) => {
-  const { fields, append, prepend, remove, swap, move, insert } = useFieldArray(
-    {
-      control,
-      name: "products",
-    }
-  );
-
+const ProductFields = ({ register, index }: ProductFieldsType) => {
   return (
     <VStack border="solid 1px" borderColor="black">
       <HStack>
