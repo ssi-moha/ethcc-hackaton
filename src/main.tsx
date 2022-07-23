@@ -9,6 +9,7 @@ import { BrowserRouter } from "react-router-dom";
 
 import App from "./App";
 import store from "./store/store";
+import "./clients/firebase";
 
 const Root = () => {
   return (
