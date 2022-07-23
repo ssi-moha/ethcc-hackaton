@@ -11,6 +11,10 @@ export const Marketplace = () => {
   const nfts = useAppSelector((state) => state.nfts);
   const collections = nfts.map((nft) => nft.contract.address);
 
+  const isAnHolder = products.some((product) =>
+    collections.includes(product.curation.toLowerCase())
+  );
+
   return (
     <Box id="main">
       <ReactCanvasConfetti fire={isConnected} className="canvas" />
@@ -24,7 +28,7 @@ export const Marketplace = () => {
               <ShopCard
                 srcItem={image}
                 title={name}
-                discount={isConnected && discount ? discount : undefined}
+                discount={isAnHolder && discount ? discount : undefined}
                 price={price}
                 isTransparent={isTransparent || false}
               />
