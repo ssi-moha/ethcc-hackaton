@@ -15,12 +15,13 @@ import {
 import ConnectWalletButton from "./ConnectWalletButton";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { NavLink } from "react-router-dom";
+import SismoBanner from "./SismoBanner";
 
 export const NavBar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
-    <HStack h={20} px={2} as="header">
+    <HStack h={24} px={2} as="header">
       <Button mr={4} bgColor="white" onClick={onOpen}>
         <HamburgerIcon w={8} h={8} />
       </Button>
@@ -53,7 +54,7 @@ export const NavBar = () => {
 
       <Spacer />
 
-      <Box display="flex" alignItems="center">
+      <Box flexDirection="column" display="flex" alignItems="center" py={8}>
         <ConnectWalletButton />
       </Box>
     </HStack>
