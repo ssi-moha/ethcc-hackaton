@@ -9,7 +9,7 @@ type TextInputProps = {
 
 const TextInput = ({ name, label, register }: TextInputProps) => {
   return (
-    <Box>
+    <Box w={"full"}>
       <FormLabel textAlign="left">{label}</FormLabel>
       <Input type="text" {...register(name)} />
     </Box>

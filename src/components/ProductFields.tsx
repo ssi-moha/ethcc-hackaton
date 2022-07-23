@@ -12,8 +12,8 @@ const ProductFields = ({ register, index }: ProductFieldsType) => {
   const baseName = index ? `products.${index}.` : "";
 
   return (
-    <HStack py={4} borderBottomColor="super" borderBottomWidth={4}>
-      <HStack flex={1}>
+    <VStack py={4} borderBottomColor="super" borderBottomWidth={4}>
+      <VStack>
         <TextInput
           name={`${baseName}name`}
           label="Product Name"
@@ -31,9 +31,9 @@ const ProductFields = ({ register, index }: ProductFieldsType) => {
           label="Price"
           register={register}
         />
-      </HStack>
+      </VStack>
 
-      <HStack alignSelf="flex-start">
+      <VStack>
         <TextInput
           name={`${baseName}curation`}
           label="Collection address"
@@ -45,8 +45,8 @@ const ProductFields = ({ register, index }: ProductFieldsType) => {
           label="Discount for holders"
           register={register}
         />
-      </HStack>
-    </HStack>
+      </VStack>
+    </VStack>
   );
 };
 

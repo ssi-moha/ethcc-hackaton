@@ -11,12 +11,13 @@ const ProductForm = ({ onSubmit }: ProductFormProps) => {
   const { handleSubmit, register } = useForm<ProductFieldsType>({});
 
   return (
-    <Box>
+    <Box w="full">
       <form onSubmit={handleSubmit(onSubmit)}>
         <ProductFields register={register} />
-        <Button type="submit">
+
+        <Button type="submit" w="full" mt="4" mb="4">
           Add
-          </Button>
+        </Button>
       </form>
     </Box>
   );
