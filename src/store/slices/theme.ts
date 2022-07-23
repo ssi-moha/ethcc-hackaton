@@ -5,7 +5,7 @@ export const theme = createSlice({
   name: "theme",
   initialState: "vanilla" as Theme,
   reducers: {
-    update: (state: Theme, action: PayloadAction<Theme>) => action.payload,
+    update: (_: Theme, action: PayloadAction<Theme>) => action.payload,
   },
 });
 

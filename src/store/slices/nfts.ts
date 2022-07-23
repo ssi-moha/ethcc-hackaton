@@ -13,7 +13,7 @@ export const balancesSlice = createSlice({
   name: "nfts",
   initialState,
   reducers: {
-    reset: (state, action) => []
+    reset: () => [],
   },
   extraReducers(builder) {
     builder.addCase(fetchNFTS.fulfilled, (state, action) => {
