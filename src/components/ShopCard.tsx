@@ -4,8 +4,8 @@ import addButton from "../assets/add-button.png";
 interface ShopCardProps {
   srcItem: string;
   title: string;
-  discount?: number;
-  price: number;
+  discount?: string;
+  price: string;
 }
 
 export const ShopCard = ({
@@ -14,8 +14,13 @@ export const ShopCard = ({
   discount,
   price,
 }: ShopCardProps) => {
-  const promoPercent = discount ? discount / 100 : 0;
-  const priceReduced = discount ? price - price * promoPercent : 0;
+  const princeNumber = parseInt(price);
+  const discountNumber = discount ? parseInt(discount) : 0;
+
+  const promoPercent = discount ? discountNumber / 100 : 0;
+  const priceReduced = discount
+    ? princeNumber - princeNumber * promoPercent
+    : 0;
 
   return (
     <Box border="1px gray solid" width="200px" borderRadius="10px">
