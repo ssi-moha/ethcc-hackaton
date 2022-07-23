@@ -5,6 +5,7 @@ import ReactDOM from "react-dom/client";
 import { WagmiConfig } from "wagmi";
 import { wagmiClient, chains } from "./clients/wagmi";
 import { Provider as ReduxProvider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
 
 import App from "./App";
 import store from "./store/store";
@@ -15,7 +16,9 @@ const Root = () => {
       <WagmiConfig client={wagmiClient}>
         <RainbowKitProvider chains={chains}>
           <ReduxProvider store={store}>
-            <App />
+            <BrowserRouter>
+              <App />
+            </BrowserRouter>
           </ReduxProvider>
         </RainbowKitProvider>
       </WagmiConfig>
