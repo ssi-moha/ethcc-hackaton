@@ -1,4 +1,4 @@
-import { createAlchemyWeb3, Nft } from "@alch/alchemy-web3";
+import {  Nft } from "@alch/alchemy-web3";
 import axios from "axios";
 
 export type NFT = Nft;

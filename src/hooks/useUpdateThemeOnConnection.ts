@@ -1,22 +1,19 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 import { useAccount } from "wagmi";
-import { getEveryNftOfWallet } from "../clients/alchemy";
-import { fetchNFTS } from "../store/slices/nfts";
+import { fetchNFTS, reset } from "../store/slices/nfts";
 import { update } from "../store/slices/theme";
-import { RootState } from "../store/store";
+import { useAppDispatch, useAppSelector } from "../store/store";
 
 const useUpdateThemeOnConnection = () => {
   const { isConnected, isDisconnected, address } = useAccount();
-  const nfts = useSelector((state: RootState) => state.nfts);
-  const dispatch = useDispatch();
+  const nfts = useAppSelector((state) => state.nfts);
+  const dispatch = useAppDispatch();
 
   const setVanillaTheme = () => dispatch(update("vanilla"));
   const setFirstTheme = () => dispatch(update("first"));
 
   async function getNfts() {
     if (address) {
-      // @ts-ignore
       dispatch(fetchNFTS(address));
     }
   }
@@ -27,6 +24,7 @@ const useUpdateThemeOnConnection = () => {
 
   useEffect(() => {
     setVanillaTheme();
+    dispatch(reset());
   }, [isDisconnected]);
 
   useEffect(() => {
