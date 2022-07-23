@@ -1,6 +1,6 @@
 # ethcc-hackaton
 
-Create your ecommerce website with ZKShop, offering your users a personalized experience based on their tokens.
+Create your ecommerce website with ZKShop, offer your users a personalized experience based on their tokens.
 
 
 **Casual ecommerce features:** 
