@@ -1,13 +1,11 @@
 import AdminForm from "./../components/AdminForm";
 
 import { Box } from "@chakra-ui/react";
-import { Layout } from "../components/Layout";
 
 import useGetAppProducts from "../hooks/useGetAppProducts";
 
 const Admin = () => {
   const products = useGetAppProducts("ukwyvv9vMiB66hiEaoRF");
-  console.log(products);
 
   return (
     <Box
@@ -18,7 +16,9 @@ const Admin = () => {
       alignItems="center"
       flex={1}
     >
-      <AdminForm />
+      {products.length !== 0 && (
+        <AdminForm products={products} id="ukwyvv9vMiB66hiEaoRF" />
+      )}
     </Box>
   );
 };

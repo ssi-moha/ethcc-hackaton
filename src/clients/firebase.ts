@@ -7,6 +7,7 @@ import {
   where,
   doc,
   getDoc,
+  updateDoc,
 } from "firebase/firestore";
 import { AdminFormValues } from "../components/AdminForm";
 
@@ -24,8 +25,8 @@ const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 export const apps = collection(db, "app");
 
-export const addAppToDB = async (app: AdminFormValues) => {
-  await addDoc(collection(db, "app"), app);
+export const updateAppFromDB = async (app: AdminFormValues, appId: string) => {
+  await updateDoc(doc(db, "app", appId), app);
 };
 
 export const getAppProducts = async (appId: string) => {
