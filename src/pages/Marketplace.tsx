@@ -11,28 +11,22 @@ export const Marketplace = () => {
   const nfts = useAppSelector((state) => state.nfts);
   const collections = nfts.map((nft) => nft.contract.address);
 
-  const basicProducts = products.filter((product) => !product.curation);
-
-  console.log(basicProducts);
-
-  const specialProducts = products.filter((product) =>
-    collections.includes(product.curation.toLowerCase())
-  );
-
-  const productsToShow = [...basicProducts, ...specialProducts];
-
   return (
     <Box id="main">
       <ReactCanvasConfetti fire={isConnected} className="canvas" />
       <Box padding="100px">
         <SimpleGrid columns={4} spacingX="0" spacingY="50px">
-          {productsToShow.map(({ image, name, discount, price }) => {
+          {products.map(({ image, name, discount, price, curation }) => {
+            const isTransparent =
+              curation && !collections.includes(curation.toLowerCase());
+
             return (
               <ShopCard
                 srcItem={image}
                 title={name}
-                discount={discount}
+                discount={isConnected && discount ? discount : undefined}
                 price={price}
+                isTransparent={isTransparent || false}
               />
             );
           })}
