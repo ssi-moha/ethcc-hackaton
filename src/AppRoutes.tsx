@@ -6,7 +6,6 @@ const AppRoutes = () => {
   return (
     <Routes>
       <Route path="/">
-        <Route index element={<Navigate to="/admin" />} />
         <Route index element={<Marketplace />} />
         <Route path="/admin" element={<Admin />} />
       </Route>

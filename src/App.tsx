@@ -1,12 +1,7 @@
-import { Marketplace } from "./pages/Marketplace";
-import { Box, ChakraProvider } from "@chakra-ui/react";
-import ReactCanvasConfetti from "react-canvas-confetti";
-import { Banner } from "./components/Banner";
-import { Layout } from "./components/Layout";
-import { NavBar } from "./components/NavBar";
-import useUpdateThemeOnConnection from "./hooks/useUpdateThemeOnConnection";
+import { ChakraProvider } from "@chakra-ui/react";
 import { useAppSelector } from "./store/store";
 import { themes } from "./theme";
+import { Layout } from "./components/Layout";
 import AppRoutes from "./AppRoutes";
 
 function App() {
@@ -14,7 +9,9 @@ function App() {
 
   return (
     <ChakraProvider theme={themes[theme]}>
-      <AppRoutes />
+      <Layout>
+        <AppRoutes />
+      </Layout>
     </ChakraProvider>
   );
 }
