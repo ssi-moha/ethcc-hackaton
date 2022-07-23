@@ -12,8 +12,11 @@ export const Layout = ({ ...props }: LayoutProps) => {
       sx={{ display: "flex", flexDirection: "column", height: "inherit" }}
     >
       <NavBar />
-      <Banner />
-      <Outlet />
+
+      <Box>
+        <Banner />
+        <Outlet />
+      </Box>
     </Box>
   );
 };

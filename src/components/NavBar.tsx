@@ -22,7 +22,7 @@ export const NavBar = ({}: NavBarProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
-    <HStack h={20} px={2}>
+    <HStack h={20} px={2} as="header">
       <Button mr={4} bgColor="white" onClick={onOpen}>
         <HamburgerIcon w={8} h={8} />
       </Button>

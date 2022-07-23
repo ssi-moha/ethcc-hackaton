@@ -14,18 +14,15 @@ export const Marketplace = () => {
       <ReactCanvasConfetti fire={isConnected} className="canvas" />
       <Box padding="100px">
         <SimpleGrid columns={4} spacingX="0" spacingY="50px">
-          {products.map((product) => {
-            return (
-              <ShopCard
-                srcItem={product.image}
-                title={product.name}
-                discount={product.discount}
-                price={product.price}
-              />
-            );
-          })}
+          {products.map(({ image, name, discount, price }) => (
+            <ShopCard
+              srcItem={image}
+              title={name}
+              discount={discount}
+              price={price}
+            />
+          ))}
         </SimpleGrid>
-        <></>
       </Box>
     </Box>
   );
