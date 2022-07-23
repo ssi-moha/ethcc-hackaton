@@ -12,7 +12,7 @@ const ProductFields = ({ register, index }: ProductFieldsType) => {
   const baseName = index ? `products.${index}.` : "";
 
   return (
-    <HStack py={4} borderBottomColor={"super"} borderBottomWidth={4}>
+    <HStack py={4} borderBottomColor="super" borderBottomWidth={4}>
       <HStack flex={1}>
         <TextInput
           name={`${baseName}name`}

@@ -6,6 +6,7 @@ import {
   AccordionPanel,
   Box,
   Button,
+  HStack,
   Modal,
   ModalContent,
   ModalHeader,
@@ -46,7 +47,6 @@ function AdminForm({ products, id }: AdminFormProps) {
     onOpen: setIsAddProductFormOpen,
     onClose: setIsAddProductFormClose,
   } = useDisclosure();
-  console.log(isAddProductFormOpen);
 
   const { handleSubmit, register, control } = useForm<AdminFormValues>({
     defaultValues: {
@@ -93,7 +93,7 @@ function AdminForm({ products, id }: AdminFormProps) {
             <h2>
               <AccordionButton>
                 <Box flex="1" textAlign="left">
-                  Add Products
+                  Products
                 </Box>
                 <AccordionIcon />
               </AccordionButton>
@@ -116,26 +116,15 @@ function AdminForm({ products, id }: AdminFormProps) {
               </VStack>
             </AccordionPanel>
           </AccordionItem>
-
-          <AccordionItem>
-            <h2>
-              <AccordionButton>
-                <Box flex="1" textAlign="left">
-                  Products
-                </Box>
-                <AccordionIcon />
-              </AccordionButton>
-            </h2>
-            <AccordionPanel pb={4}>test</AccordionPanel>
-          </AccordionItem>
         </Accordion>
       </form>
+
       <Modal onClose={setIsAddProductFormClose} isOpen={isAddProductFormOpen}>
         <ModalOverlay />
-        <ModalContent>
+        <ModalContent py={2}>
           <VStack px={8}>
             <ModalHeader mx="auto" textAlign="center">
-              <Text>Add a product</Text>
+              <Text fontWeight="bold">Add a product</Text>
             </ModalHeader>
             <ProductForm onSubmit={addProductForm} />
           </VStack>
