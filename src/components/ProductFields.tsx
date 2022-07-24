@@ -1,4 +1,4 @@
-import { VStack } from "@chakra-ui/react";
+import { HStack, VStack } from "@chakra-ui/react";
 import { UseFormRegister } from "react-hook-form";
 import TextInput from "./TextInput";
 
@@ -11,8 +11,8 @@ const ProductFields = ({ register, index }: ProductFieldsType) => {
   const baseName = index ? `products.${index}.` : "";
 
   return (
-    <VStack py={4} borderBottomColor="super" borderBottomWidth={4}>
-      <VStack>
+    <HStack py={4} borderBottomColor="super" borderBottomWidth={4}>
+      <VStack flex={1} px={4}>
         <TextInput
           name={`${baseName}name`}
           label="Product Name"
@@ -32,7 +32,13 @@ const ProductFields = ({ register, index }: ProductFieldsType) => {
         />
       </VStack>
 
-      <VStack>
+      <VStack flex={1} px={4}>
+        <TextInput
+          name={`${baseName}collection`}
+          label="Collection name"
+          register={register}
+        />
+
         <TextInput
           name={`${baseName}curation`}
           label="Collection address"
@@ -45,7 +51,7 @@ const ProductFields = ({ register, index }: ProductFieldsType) => {
           register={register}
         />
       </VStack>
-    </VStack>
+    </HStack>
   );
 };
 

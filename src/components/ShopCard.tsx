@@ -6,6 +6,7 @@ interface ShopCardProps {
   title: string;
   discount?: string;
   price: string;
+  collection: string;
   isTransparent: boolean;
   isEligible: boolean | string;
 }
@@ -15,6 +16,7 @@ export const ShopCard = ({
   title,
   discount,
   price,
+  collection,
   isTransparent,
   isEligible,
 }: ShopCardProps) => {
@@ -94,7 +96,7 @@ export const ShopCard = ({
             color={"white"}
             fontWeight="bold"
           >
-            Connect your Misfitwear wallet to unlock
+            Connect your {collection || "Misfitwear"} wallet to unlock
           </Text>
         </>
       )}

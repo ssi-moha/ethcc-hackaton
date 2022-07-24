@@ -26,6 +26,7 @@ export type ProductFieldsType = {
   name: string;
   image: string;
   price: string;
+  collection: string;
   discount: string;
   curation: string;
 };

@@ -24,22 +24,25 @@ export const Marketplace = () => {
       <ReactCanvasConfetti fire={isConnected} className="canvas" />
       <Box padding="100px">
         <SimpleGrid columns={4} spacingX="0" spacingY="50px">
-          {app.products.map(({ image, name, discount, price, curation }) => {
-            const isTransparent =
-              curation && !collections.includes(curation.toLowerCase());
+          {app.products.map(
+            ({ image, name, discount, price, collection, curation }) => {
+              const isTransparent =
+                curation && !collections.includes(curation.toLowerCase());
 
-            return (
-              <ShopCard
-                key={`products-${name}`}
-                srcItem={image}
-                title={name}
-                discount={isAnHolder && discount ? discount : undefined}
-                price={price}
-                isTransparent={isTransparent || false}
-                isEligible={curation && isAnHolder}
-              />
-            );
-          })}
+              return (
+                <ShopCard
+                  key={`products-${name}`}
+                  srcItem={image}
+                  title={name}
+                  discount={isAnHolder && discount ? discount : undefined}
+                  price={price}
+                  collection={collection}
+                  isTransparent={isTransparent || false}
+                  isEligible={curation && isAnHolder}
+                />
+              );
+            }
+          )}
         </SimpleGrid>
       </Box>
     </Box>
