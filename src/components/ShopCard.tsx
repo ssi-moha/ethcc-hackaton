@@ -148,7 +148,7 @@ export const ShopCard = ({
               <Text
                 fontWeight="bold"
                 fontSize="14px"
-                color="red.500"
+                color="#FF5F1F"
                 padding="2px"
               >
                 {`${priceReduced}$`}
