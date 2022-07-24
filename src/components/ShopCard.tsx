@@ -28,7 +28,7 @@ export const ShopCard = ({
 
   return (
     <Box
-      border="1px gray solid"
+      boxShadow="rgba(0, 0, 0, 0.35) 0px 5px 15px"
       bg="white"
       width="200px"
       borderRadius="10px"
