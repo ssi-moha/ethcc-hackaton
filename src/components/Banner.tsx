@@ -1,7 +1,5 @@
-import { Box, color, useTheme } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 
-type BannerProps = {};
-
-export const Banner = ({}: BannerProps) => (
+export const Banner = () => (
   <Box height={1} bgGradient="linear(to-r, bannerLeft, bannerRight)" />
 );
