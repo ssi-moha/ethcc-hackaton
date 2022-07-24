@@ -3,7 +3,6 @@ import AdminForm from "./../components/AdminForm";
 import { Box } from "@chakra-ui/react";
 
 import useGetAppProducts from "../hooks/useGetAppProducts";
-import useUpdateThemeOnConnection from "../hooks/useUpdateThemeOnConnection";
 
 const Admin = () => {
   const { app, refresh } = useGetAppProducts("ukwyvv9vMiB66hiEaoRF");

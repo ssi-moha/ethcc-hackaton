@@ -16,9 +16,12 @@ import ConnectWalletButton from "./ConnectWalletButton";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { NavLink } from "react-router-dom";
 import SismoBanner from "./SismoBanner";
+import useGetAppProducts from "../hooks/useGetAppProducts";
+import { useEffect } from "react";
 
-export const NavBar = () => {
+export const NavBar = ({ admin }: { admin: boolean }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { app, refresh } = useGetAppProducts("ukwyvv9vMiB66hiEaoRF");
 
   return (
     <HStack h={24} px={2} as="header">
@@ -54,9 +57,12 @@ export const NavBar = () => {
 
       <Spacer />
 
-      <Box flexDirection="column" display="flex" alignItems="center" py={8}>
-        <ConnectWalletButton />
-      </Box>
+      {!admin && (
+        <Box display="flex" alignItems="center" flexDirection="column" py={8}>
+          <ConnectWalletButton />
+          {app !== null && app.sismo && <SismoBanner />}
+        </Box>
+      )}
     </HStack>
   );
 };
