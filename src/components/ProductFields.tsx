@@ -1,6 +1,5 @@
-import { HStack, VStack } from "@chakra-ui/react";
-import { Control, useFieldArray, UseFormRegister } from "react-hook-form";
-import { AdminFormValues } from "./AdminForm";
+import { VStack } from "@chakra-ui/react";
+import { UseFormRegister } from "react-hook-form";
 import TextInput from "./TextInput";
 
 type ProductFieldsType = {

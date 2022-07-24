@@ -34,5 +34,7 @@ export const getAppProducts = async (appId: string) => {
 
   const productSnap = await getDoc(app);
 
-  return productSnap.data()?.products;
+  const data = productSnap.data();
+
+  return { products: data?.products, appname: data?.appname, logo: data?.logo  };
 };

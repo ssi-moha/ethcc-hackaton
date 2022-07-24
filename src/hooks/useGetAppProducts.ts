@@ -1,20 +1,20 @@
 import { useEffect, useState } from "react";
 import { getAppProducts } from "../clients/firebase";
-import { ProductFieldsType } from "../components/AdminForm";
+import { AdminFormValues } from "../components/AdminForm";
 
 const useGetAppProducts = (appId: string) => {
-  const [products, setProducts] = useState<ProductFieldsType[]>([]);
+  const [app, setApp] = useState<AdminFormValues>();
 
   useEffect(() => {
     async function storeAppProducts() {
       const products = await getAppProducts(appId);
-      setProducts(products);
+      setApp(products);
     }
 
     storeAppProducts();
   }, [appId]);
 
-  return products;
+  return app;
 };
 
 export default useGetAppProducts;

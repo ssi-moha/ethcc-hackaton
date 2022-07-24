@@ -1,7 +1,6 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import { useAppSelector } from "./store/store";
 import { themes } from "./theme";
-import { Layout } from "./components/Layout";
 import AppRoutes from "./AppRoutes";
 import useUpdateThemeOnConnection from "./hooks/useUpdateThemeOnConnection";
 

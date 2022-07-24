@@ -6,8 +6,9 @@ import useGetAppProducts from "../hooks/useGetAppProducts";
 import useUpdateThemeOnConnection from "../hooks/useUpdateThemeOnConnection";
 
 const Admin = () => {
-  const products = useGetAppProducts("ukwyvv9vMiB66hiEaoRF");
-  
+  const app = useGetAppProducts("ukwyvv9vMiB66hiEaoRF");
+  if (!app) return <div>Loading...</div>;
+
   return (
     <Box
       id="main"
@@ -17,8 +18,13 @@ const Admin = () => {
       alignItems="center"
       flex={1}
     >
-      {products.length !== 0 && (
-        <AdminForm products={products} id="ukwyvv9vMiB66hiEaoRF" />
+      {app?.products.length !== 0 && (
+        <AdminForm
+          appname={app.appname}
+          logo={app.logo}
+          products={app.products}
+          id="ukwyvv9vMiB66hiEaoRF"
+        />
       )}
     </Box>
   );

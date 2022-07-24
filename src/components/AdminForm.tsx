@@ -38,10 +38,12 @@ export type AdminFormValues = {
 
 type AdminFormProps = {
   id: string;
+  appname: string;
+  logo: string;
   products: ProductFieldsType[];
 };
 
-function AdminForm({ products, id }: AdminFormProps) {
+function AdminForm({ appname, logo, products, id }: AdminFormProps) {
   const {
     isOpen: isAddProductFormOpen,
     onOpen: setIsAddProductFormOpen,
@@ -50,7 +52,9 @@ function AdminForm({ products, id }: AdminFormProps) {
 
   const { handleSubmit, register, control } = useForm<AdminFormValues>({
     defaultValues: {
+      appname,
       products,
+      logo,
     },
   });
 
