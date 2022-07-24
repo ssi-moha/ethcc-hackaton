@@ -27,9 +27,37 @@ export const ShopCard = ({
   return (
     <Box
       border="1px gray solid"
+      bg="white"
       width="200px"
       borderRadius="10px"
       position={"relative"}
+      _before={{
+        content: '""',
+        zIndex: -1,
+        position: "absolute",
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0,
+        background:
+          "linear-gradient(-45deg, var(--chakra-colors-bannerLeft) 0%, var(--chakra-colors-bannerRight) 100% )",
+        transform: "translate3d(0px, 20px, 0) scale(0.95)",
+        filter: "blur(20px)",
+        opacity: 0.7,
+        transition: "opacity 0.3s",
+        borderRadius: "inherit",
+      }}
+      _after={{
+        content: '""',
+        zIndex: -1,
+        position: "absolute",
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0,
+        background: "inherit",
+        borderRadius: "inherit",
+      }}
     >
       {isTransparent && (
         <Box
@@ -39,11 +67,19 @@ export const ShopCard = ({
             left: 0,
             bottom: 0,
             right: 0,
-            background: "black",
             opacity: 0.4,
             borderRadius: "10px",
           }}
-        />
+          display="flex"
+          justifyContent="center"
+          flexDirection="column"
+          alignItems="center"
+          bgGradient="linear(to-r, #0987A0, #805AD5)"
+        >
+          <Text color="white" fontWeight="bold" textAlign="center" mb={20}>
+            Connect eligible wallet
+          </Text>
+        </Box>
       )}
       <Box padding="8px">
         <Image height="200px" width="100%" borderRadius="10px" src={srcItem} />
