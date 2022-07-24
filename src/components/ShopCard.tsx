@@ -176,6 +176,7 @@ export const ShopCard = ({
             borderRadius="10px"
             padding="2px"
             isDisabled={isTransparent}
+            bg="#DF00FF"
           >
             <Box
               display="flex"
@@ -185,7 +186,7 @@ export const ShopCard = ({
               <Text
                 fontWeight="bold"
                 fontSize="14px"
-                color="black"
+                color="white"
                 marginRight="4px"
               >
                 Buy
