@@ -98,6 +98,19 @@ export const ShopCard = ({
           >
             Connect your {collection || "Misfitwear"} wallet to unlock
           </Text>
+
+          <Box
+            position={"absolute"}
+            right={-2}
+            top={-2}
+            bgColor={"white"}
+            opacity={0.9}
+            borderRadius="md"
+            p={1}
+            boxShadow="rgba(0, 0, 0, 0.8) 0px 5px 15px"
+          >
+            {collection || "Misfitwear"}
+          </Box>
         </>
       )}
       <Box padding="8px">
