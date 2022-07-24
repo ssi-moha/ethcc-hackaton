@@ -177,6 +177,7 @@ export const ShopCard = ({
             padding="2px"
             isDisabled={isTransparent}
             bg="#DF00FF"
+            _hover={{ bg: "#FF5F1F" }}
           >
             <Box
               display="flex"

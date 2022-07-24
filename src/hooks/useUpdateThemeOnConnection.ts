@@ -19,13 +19,15 @@ const useUpdateThemeOnConnection = () => {
   }
 
   useEffect(() => {
+    if (isConnected) {
     setFirstTheme();
-  }, [isConnected]);
-
-  useEffect(() => {
+    }
+    if (isDisconnected) {
     setVanillaTheme();
     dispatch(reset());
-  }, [isDisconnected]);
+    }
+  }, [isConnected, isDisconnected]);
+
 
   useEffect(() => {
     if (address) {

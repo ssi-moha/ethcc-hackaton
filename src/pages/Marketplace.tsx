@@ -3,10 +3,12 @@ import ReactCanvasConfetti from "react-canvas-confetti";
 import { useAccount } from "wagmi";
 import { ShopCard } from "../components/ShopCard";
 import useGetAppProducts from "../hooks/useGetAppProducts";
+import useUpdateThemeOnConnection from "../hooks/useUpdateThemeOnConnection";
 import { useAppSelector } from "../store/store";
 
 export const Marketplace = () => {
-  const {app, refresh} = useGetAppProducts("ukwyvv9vMiB66hiEaoRF");
+  const {} = useUpdateThemeOnConnection();
+  const { app, refresh } = useGetAppProducts("ukwyvv9vMiB66hiEaoRF");
   const { isConnected } = useAccount();
   const nfts = useAppSelector((state) => state.nfts);
   const collections = nfts.map((nft) => nft.contract.address);
