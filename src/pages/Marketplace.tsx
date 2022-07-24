@@ -36,6 +36,7 @@ export const Marketplace = () => {
                 discount={isAnHolder && discount ? discount : undefined}
                 price={price}
                 isTransparent={isTransparent || false}
+                isEligible={curation && isAnHolder}
               />
             );
           })}

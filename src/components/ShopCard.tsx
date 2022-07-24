@@ -7,6 +7,7 @@ interface ShopCardProps {
   discount?: string;
   price: string;
   isTransparent: boolean;
+  isEligible: boolean | string;
 }
 
 export const ShopCard = ({
@@ -15,6 +16,7 @@ export const ShopCard = ({
   discount,
   price,
   isTransparent,
+  isEligible,
 }: ShopCardProps) => {
   const princeNumber = parseInt(price);
   const discountNumber = discount ? parseInt(discount) : 0;
@@ -31,55 +33,70 @@ export const ShopCard = ({
       width="200px"
       borderRadius="10px"
       position={"relative"}
-      _before={{
-        content: '""',
-        zIndex: -1,
-        position: "absolute",
-        top: 0,
-        right: 0,
-        bottom: 0,
-        left: 0,
-        background:
-          "linear-gradient(-45deg, var(--chakra-colors-bannerLeft) 0%, var(--chakra-colors-bannerRight) 100% )",
-        transform: "translate3d(0px, 20px, 0) scale(0.95)",
-        filter: "blur(20px)",
-        opacity: 0.7,
-        transition: "opacity 0.3s",
-        borderRadius: "inherit",
-      }}
-      _after={{
-        content: '""',
-        zIndex: -1,
-        position: "absolute",
-        top: 0,
-        right: 0,
-        bottom: 0,
-        left: 0,
-        background: "inherit",
-        borderRadius: "inherit",
-      }}
+      _before={
+        isEligible
+          ? {
+              content: '""',
+              zIndex: -1,
+              position: "absolute",
+              top: "-12px",
+              right: "-12px",
+              bottom: "-12px",
+              left: "-12px",
+              background:
+                "linear-gradient(to right, var(--chakra-colors-bannerLeft) , var(--chakra-colors-bannerRight))",
+              transition: "opacity 0.3s",
+              borderRadius: "inherit",
+              filter: "blur(5px)",
+              opacity: 0.9,
+            }
+          : {}
+      }
+      _after={
+        isEligible
+          ? {
+              content: '""',
+              zIndex: -1,
+              position: "absolute",
+              top: 0,
+              right: 0,
+              bottom: 0,
+              left: 0,
+              background: "inherit",
+              borderRadius: "inherit",
+            }
+          : {}
+      }
     >
       {isTransparent && (
-        <Box
-          sx={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            bottom: 0,
-            right: 0,
-            opacity: 0.4,
-            borderRadius: "10px",
-          }}
-          display="flex"
-          justifyContent="center"
-          flexDirection="column"
-          alignItems="center"
-          bgGradient="linear(to-r, #0987A0, #805AD5)"
-        >
-          <Text color="white" fontWeight="bold" textAlign="center" mb={20}>
-            Connect eligible wallet
+        <>
+          <Box
+            sx={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              bottom: 0,
+              right: 0,
+              opacity: 0.4,
+              borderRadius: "10px",
+            }}
+            display="flex"
+            justifyContent="center"
+            flexDirection="column"
+            alignItems="center"
+            bgGradient="linear(to-r, #0987A0, #805AD5)"
+          />
+          <Text
+            px={1}
+            position={"absolute"}
+            top={90}
+            textAlign="center"
+            color={"white"}
+            fontWeight="bold"
+          >
+            Connect your Misfitwear wallet to unlock
           </Text>
-        </Box>
+        </>
       )}
       <Box padding="8px">
         <Image height="200px" width="100%" borderRadius="10px" src={srcItem} />
