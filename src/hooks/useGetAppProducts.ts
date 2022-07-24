@@ -1,20 +1,25 @@
 import { useEffect, useState } from "react";
-import { getAppProducts } from "../clients/firebase";
+import { getAppData } from "../clients/firebase";
 import { AdminFormValues } from "../components/AdminForm";
 
 const useGetAppProducts = (appId: string) => {
-  const [app, setApp] = useState<AdminFormValues>();
+  const [app, setApp] = useState<AdminFormValues | null>(null);
+  const [count, setCount] = useState(0);
+
+  function refresh() {
+    setCount(count + 1);
+  }
 
   useEffect(() => {
     async function storeAppProducts() {
-      const products = await getAppProducts(appId);
-      setApp(products);
+      const app = await getAppData(appId);
+      if (app) setApp(app as AdminFormValues);
     }
 
     storeAppProducts();
-  }, [appId]);
+  }, [appId, count]);
 
-  return app;
+  return { app, refresh };
 };
 
 export default useGetAppProducts;

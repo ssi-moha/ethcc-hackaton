@@ -16,9 +16,7 @@ import ConnectWalletButton from "./ConnectWalletButton";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { NavLink } from "react-router-dom";
 
-type NavBarProps = {};
-
-export const NavBar = ({}: NavBarProps) => {
+export const NavBar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (

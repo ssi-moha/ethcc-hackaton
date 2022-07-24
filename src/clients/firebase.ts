@@ -29,12 +29,19 @@ export const updateAppFromDB = async (app: AdminFormValues, appId: string) => {
   await updateDoc(doc(db, "app", appId), app);
 };
 
-export const getAppProducts = async (appId: string) => {
+export const enableSismoBadge = async (app: AdminFormValues, appId: string) => {
+  await updateDoc(doc(db, "app", appId), {
+    ...app,
+    sismo: app.sismo ? false : true,
+  });
+};
+
+export const getAppData = async (appId: string) => {
   const app = doc(db, "app", appId);
 
   const productSnap = await getDoc(app);
 
   const data = productSnap.data();
 
-  return { products: data?.products, appname: data?.appname, logo: data?.logo  };
+  return data;
 };

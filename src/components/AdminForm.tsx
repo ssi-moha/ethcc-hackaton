@@ -11,13 +11,13 @@ import {
   ModalContent,
   ModalHeader,
   ModalOverlay,
+  Switch,
   Text,
   useDisclosure,
   VStack,
 } from "@chakra-ui/react";
-import { useState } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
-import { updateAppFromDB } from "../clients/firebase";
+import { enableSismoBadge, updateAppFromDB } from "../clients/firebase";
 import ProductFields from "./ProductFields";
 import ProductForm from "./ProductForm";
 import TextInput from "./TextInput";
@@ -34,6 +34,7 @@ export type AdminFormValues = {
   appname: string;
   logo: string;
   products: ProductFieldsType[];
+  sismo?: boolean;
 };
 
 type AdminFormProps = {
@@ -41,9 +42,18 @@ type AdminFormProps = {
   appname: string;
   logo: string;
   products: ProductFieldsType[];
+  sismo?: boolean;
+  refresh: Function;
 };
 
-function AdminForm({ appname, logo, products, id }: AdminFormProps) {
+function AdminForm({
+  appname,
+  logo,
+  products,
+  id,
+  sismo,
+  refresh,
+}: AdminFormProps) {
   const {
     isOpen: isAddProductFormOpen,
     onOpen: setIsAddProductFormOpen,
@@ -57,6 +67,11 @@ function AdminForm({ appname, logo, products, id }: AdminFormProps) {
       logo,
     },
   });
+
+  const toggleSismo = async () => {
+    await enableSismoBadge({ appname, logo, products, sismo }, id);
+    refresh();
+  };
 
   const { fields, append } = useFieldArray({
     control,
@@ -118,6 +133,19 @@ function AdminForm({ appname, logo, products, id }: AdminFormProps) {
                   Save
                 </Button>
               </VStack>
+            </AccordionPanel>
+          </AccordionItem>
+          <AccordionItem>
+            <h2>
+              <AccordionButton>
+                <Box flex="1" textAlign="left">
+                  Enable Sismo Zk feature
+                </Box>
+                <AccordionIcon />
+              </AccordionButton>
+            </h2>
+            <AccordionPanel>
+              <Switch isChecked={sismo} onChange={toggleSismo} />
             </AccordionPanel>
           </AccordionItem>
         </Accordion>
