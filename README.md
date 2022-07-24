@@ -19,7 +19,7 @@ If your wallet owns valuable tokens and you care for your privacy, why would you
 Why would you disclose your IRL location while being connected with a wallet owning high value assets?
 ZKshop allows you to create badges based on the onchain assets relevant for your shop. Your clients are able to prove they own tokens from a burner wallet.
 
-Increase the trust from your users, create an web3 ecommerce experience with zero knowledge proof.
+Increase the trust from your users, create an web3 ecommerce experience with a Zero Knowledge Attester.
 
 
 
@@ -37,3 +37,6 @@ Polygon
 Wallet interactions:
 Rainbow
 Alchemy
+
+Zero Knowledge Attester:
+Sismo - 
